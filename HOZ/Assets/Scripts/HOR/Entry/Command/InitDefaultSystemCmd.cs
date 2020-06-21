@@ -1,4 +1,6 @@
-﻿namespace HOR.Entry.Command
+﻿using SubSystem;
+
+namespace HOR.Entry.Command
 {
     public class InitDefaultSystemCmd : strange.extensions.command.impl.Command
     {
@@ -7,10 +9,9 @@
             DefaultSystem defaultSystem =
             injectionBinder.GetInstance<DefaultSystem>(EntryInjectionName.ENTRY_DEFAULT_SYSTEM);
             
-//            defaultSystem.AddSubSystem();
+            defaultSystem.AddSubSystem(new ConfigSubSystem());
             Service.Set(defaultSystem);
         }
-        
-        
+
     }
 }
