@@ -15,6 +15,7 @@ namespace HOR.BattleSystem.Weapon
                 {
                     new BulletModel(ob.Id, ob.Path, ob.MoveSpeed, ob.TimeLife, ob.Damage, ob.RadiusDamage, ob.RadiusColl)
                 };
+                obs[0].Bullet.SetActive(false);
                 bulletPool.Add(ob.Id, obs);
             }
         }

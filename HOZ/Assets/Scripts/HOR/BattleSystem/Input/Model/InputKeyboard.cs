@@ -31,17 +31,17 @@ namespace HOR.BattleSystem.Input.Model
 
         public bool IsInputSkill_1()
         {
-            return UnityEngine.Input.GetKeyDown(KeyCode.Q);
+            return UnityEngine.Input.GetKeyDown(KeyCode.J);
         }
 
         public bool IsInputSkill_2()
         {
-            return UnityEngine.Input.GetKeyDown(KeyCode.W);
+            return UnityEngine.Input.GetKeyDown(KeyCode.K);
         }
 
         public bool IsInputSkill_3()
         {
-            return UnityEngine.Input.GetKeyDown(KeyCode.E);
+            return UnityEngine.Input.GetKeyDown(KeyCode.L);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace HOR.Entry.Command
             });
 //=====================
             
-            SignalManager.EnterBattleModeSignal.Dispatch();
+            Service.Set(new GameObject("Battle_System").AddComponent<BattleStartup>());
         }
     }
 }

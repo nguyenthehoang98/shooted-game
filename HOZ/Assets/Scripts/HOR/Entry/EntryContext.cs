@@ -22,7 +22,6 @@ namespace HOR.Entry
             commandBinder.Bind<InitDefaultSystemSignal>().To<InitDefaultSystemCmd>();
             commandBinder.Bind<InitDataManagerSignal>().To<InitDataManagerCmd>();
             commandBinder.Bind<InitDataBattleSystemSignal>().To<InitDataBattleSystemCmd>();
-            commandBinder.Bind<EnterBattleModeSignal>().To<EnterBattleModeCmd>();
 
             // commandBinder...
 
