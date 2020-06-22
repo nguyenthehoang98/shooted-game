@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Config
 {
 
-	[CreateAssetMenu(menuName = "ScriptObject/MappingGameConfig", order = 1, fileName = "MappingGameConfig")]
+	[CreateAssetMenu(menuName = "ScriptObject/MappingGameConfig", order = 0, fileName = "MappingGameConfig")]
 	public class MappingConfigToScript : ScriptableObject
 	{
 

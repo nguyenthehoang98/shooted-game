@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HOR.BattleSystem.Config
 {
-    [CreateAssetMenu(menuName = "Battle/WeaponConfig", order = 2, fileName = "WeaponConfig")]
+    [CreateAssetMenu(menuName = "ScriptObject/WeaponConfig", order = 2, fileName = "WeaponConfig")]
     public class WeaponConfigScripts : ScriptableObject
     {
         public List<BulletModel> bullets;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HOR.BattleSystem.Config
 {
-    [CreateAssetMenu(menuName = "Battle/CharacterConfig", order = 1, fileName = "CharacterConfig")]
+    [CreateAssetMenu(menuName = "ScriptObject/CharacterConfig", order = 1, fileName = "CharacterConfig")]
     public class CharacterConfigScript : ScriptableObject
     {
         public string pathModel;
