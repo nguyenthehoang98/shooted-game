@@ -1,19 +1,17 @@
 ﻿using System.Collections.Generic;
 using HOR.BattleSystem.Character.Action.Model;
+using UnityEngine;
 
 namespace HOR.BattleSystem.Character.Action.Component
 {
     public struct ActionComponent
     {
         public ActionModel actionModel;
-        private CharacterActionHandle actionHandle;
         private List<BaseAction> baseActions;
 
-        public void Setup(CharacterActionHandle characterAction, ActionModel action)
+        public void Setup(ActionModel action)
         {
             this.actionModel = action;
-            this.actionHandle = characterAction;
-            this.actionHandle.actionModel = actionModel;
             baseActions = new List<BaseAction>();
         }
         
@@ -27,7 +25,7 @@ namespace HOR.BattleSystem.Character.Action.Component
         {
             foreach (var i in baseActions)
             {
-                i.Execute(actionHandle);
+                i.Execute();
             }
         }
     }

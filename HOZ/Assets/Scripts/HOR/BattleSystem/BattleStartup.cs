@@ -2,6 +2,7 @@
 using HOR.BattleSystem.Input.System;
 using HOR.BattleSystem.Weapon.System;
 using Leopotam.Ecs;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace HOR.BattleSystem
@@ -37,7 +38,7 @@ namespace HOR.BattleSystem
             if (_systems != null) {
                 _systems.Destroy ();
                 _systems = null;
-                _world.Destroy ();
+                _world?.Destroy ();
                 _world = null;
             }
         }

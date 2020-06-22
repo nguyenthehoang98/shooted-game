@@ -25,9 +25,10 @@ namespace HOR.BattleSystem.Character.System
             entity.Replace(dash);
             
             ActionComponent action = new ActionComponent();
-            action.Setup(manager.CharacterActionHandle, manager.CharacterConfigScript.action);
-            action.AddAction(new LoadBulletAction(world, manager.CharacterMovementHandle.controller.transform,
-                Resources.Load("Bullet") as GameObject));
+            LoadBulletAction loadBullet = new LoadBulletAction(world, manager.CharacterActionHandle,
+                manager.CharacterMovementHandle.controller.transform, BattleUtils.IdBullet);
+            action.Setup(manager.CharacterConfigScript.action);
+            action.AddAction(loadBullet);
             entity.Replace(action);
         }
 

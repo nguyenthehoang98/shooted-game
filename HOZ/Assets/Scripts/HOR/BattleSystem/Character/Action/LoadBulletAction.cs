@@ -1,5 +1,6 @@
 ﻿using HOR.BattleSystem.Character.Action.Component;
 using HOR.BattleSystem.Character.Action.Model;
+using HOR.BattleSystem.Weapon.Model;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -8,19 +9,21 @@ namespace HOR.BattleSystem.Character.Action
     public class LoadBulletAction : BaseAction
     {
         private Transform muzzle;
-        private GameObject bullet;
-        
-        public LoadBulletAction(EcsWorld world, Transform muzzle, GameObject bullet) : base(world)
+        private int idBullet = -1;
+
+        public LoadBulletAction(EcsWorld world, CharacterActionHandle actionHandle, Transform muzzle, int id)
+            : base(world, actionHandle)
         {
             this.muzzle = muzzle;
-            this.bullet = bullet;
+            this.idBullet = id;
         }
 
         protected override void SetupAction()
         {
             var entity = world.NewEntity();
             LoadBulletComponent loadBulletComponent = new LoadBulletComponent();
-            loadBulletComponent.Setup(muzzle, bullet);
+            BulletModel bulletModel = Service.Get<BattleManager>().WeaponContainer.GetBulletModel(idBullet);
+            loadBulletComponent.Setup(muzzle, bulletModel);
             entity.Replace(loadBulletComponent);
         }
 

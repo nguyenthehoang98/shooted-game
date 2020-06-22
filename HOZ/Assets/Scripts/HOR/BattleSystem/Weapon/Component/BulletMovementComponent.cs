@@ -10,9 +10,9 @@ namespace HOR.BattleSystem.Weapon.Component
         private float time;
         private bool isLive;
         
-        public void Setup(Transform bullet, BulletModel bulletModel)
+        public void Setup(BulletModel bulletModel)
         {
-            this.root = bullet;
+            this.root = bulletModel.Bullet.transform;
             this.bulletModel = bulletModel;
         }
 

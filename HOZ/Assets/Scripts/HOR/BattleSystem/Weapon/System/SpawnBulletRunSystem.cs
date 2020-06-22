@@ -8,16 +8,18 @@ namespace HOR.BattleSystem.Weapon.System
     public class SpawnBulletRunSystem : IEcsRunSystem
     {
         private readonly EcsFilter<LoadBulletComponent>.Exclude<BulletMovementComponent> filterBullet = null;
+        private readonly BattleManager battleManager = null;
+        
         public void Run()
         {
             foreach (var i in filterBullet)
             {
                 ref var entity = ref filterBullet.GetEntity(i);
                 ref var load = ref filterBullet.Get1(i);
-                load.Execute();
+                load.Update();
                 
                 BulletMovementComponent bulletMove = new BulletMovementComponent();
-                bulletMove.Setup(load.Bullet.transform, new BulletModel(20, 4, 0, 0));
+                bulletMove.Setup(load.BulletModel);
                 bulletMove.Fire();
                 entity.Replace(bulletMove);
             }

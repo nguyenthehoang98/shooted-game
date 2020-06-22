@@ -1,13 +1,20 @@
 ﻿using Leopotam.Ecs;
+using UnityEngine;
 
 namespace HOR.BattleSystem.Character.Action.Model
 {
     public abstract class BaseAction
     {
         protected readonly EcsWorld world;
-        public BaseAction(EcsWorld world) { this.world = world; }
+        protected readonly CharacterActionHandle actionHandle;
 
-        public void Execute(CharacterActionHandle actionHandle)
+        public BaseAction(EcsWorld world, CharacterActionHandle action)
+        {
+            this.world = world;
+            this.actionHandle = action;
+        }
+
+        public void Execute()
         {
             if (actionHandle.GetSkill() == null) return;
             if (actionHandle.GetSkill().Id.Equals(IdActionRoot()))
