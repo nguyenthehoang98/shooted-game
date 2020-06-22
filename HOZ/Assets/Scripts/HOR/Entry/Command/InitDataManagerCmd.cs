@@ -11,7 +11,7 @@ namespace HOR.Entry.Command
         
         public override void Execute()
         {
-            DLog.Log("Init Data CMd");
+            Debug.Log("Init Data CMd");
             Service.Set(SignalManager);
             SignalManager.InitDataBattleSystemSignal.Dispatch();
         }

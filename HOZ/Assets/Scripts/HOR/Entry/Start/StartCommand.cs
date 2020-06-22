@@ -10,7 +10,7 @@ namespace HOR.Entry.Start
         
         public override void Execute()
         {
-            DLog.Log("StartCommand::Execute");
+            Debug.Log("StartCommand::Execute");
             InitDefaultSystemSignal.Dispatch();
             InitDataManagerSignal.Dispatch();
         }
