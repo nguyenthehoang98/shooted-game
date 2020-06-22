@@ -84,6 +84,7 @@ namespace HOR.BattleSystem.Character.Movement
         public void Dash()
         {
             this.isDash = true;
+            this.controller.GetComponent<MeshRenderer>().enabled = false;
         }
 
         public void DashRelease()
@@ -95,6 +96,7 @@ namespace HOR.BattleSystem.Character.Movement
                     c.GetComponent<Collider>().isTrigger = false;
             }
 
+            this.controller.GetComponent<MeshRenderer>().enabled = true;
             colls.Clear();
         }
 
