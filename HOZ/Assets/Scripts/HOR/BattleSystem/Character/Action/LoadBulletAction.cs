@@ -22,7 +22,7 @@ namespace HOR.BattleSystem.Character.Action
         {
             var entity = world.NewEntity();
             LoadBulletComponent loadBulletComponent = new LoadBulletComponent();
-            BulletModel bulletModel = Service.Get<BattleManager>().WeaponContainer.GetBulletModel(idBullet);
+            BulletModel bulletModel = Service.Get<CharacterManager>().WeaponContainer.GetBulletModel(idBullet);
             loadBulletComponent.Setup(muzzle, bulletModel);
             entity.Replace(loadBulletComponent);
         }

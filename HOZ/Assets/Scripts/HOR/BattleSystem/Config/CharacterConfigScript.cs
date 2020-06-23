@@ -1,5 +1,6 @@
 ﻿using System;
 using HOR.BattleSystem.Character.Action.Model;
+using HOR.BattleSystem.Character.Animation.Model;
 using HOR.BattleSystem.Character.Movement.Model;
 using UnityEngine;
 
@@ -13,5 +14,6 @@ namespace HOR.BattleSystem.Config
         public RotateModel rotate;
         public DashModel dash;
         public ActionModel action;
+        public AnimationModel anim;
     }
 }

@@ -25,7 +25,7 @@ namespace HOR.BattleSystem
                 .Add(new CharacterSystem())
                 .Add(new SpawnBulletRunSystem())
                 .Add(new BulletRunSystem())
-                .Inject(Service.Get<BattleManager>())
+                .Inject(Service.Get<CharacterManager>())
                 .Init();
         }
 

@@ -8,7 +8,7 @@ namespace HOR.BattleSystem.Weapon.System
     public class SpawnBulletRunSystem : IEcsRunSystem
     {
         private readonly EcsFilter<LoadBulletComponent>.Exclude<BulletMovementComponent> filterBullet = null;
-        private readonly BattleManager battleManager = null;
+        private readonly CharacterManager characterManager = null;
         
         public void Run()
         {

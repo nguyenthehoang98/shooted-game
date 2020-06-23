@@ -1,6 +1,7 @@
 ﻿using HOR.BattleSystem;
 using HOR.BattleSystem.Character.Action;
 using HOR.BattleSystem.Character.Action.Model;
+using HOR.BattleSystem.Character.Animation.Model;
 using HOR.BattleSystem.Character.Movement;
 using HOR.BattleSystem.Character.Movement.Model;
 using HOR.BattleSystem.Config;
@@ -24,6 +25,7 @@ namespace HOR.Entry.Command
 //=====================
             CharacterConfigScript characterConfig = new CharacterConfigScript()
             {
+                anim = new AnimationModel(_characterConfig.anim.StructAnim),
                 action = new ActionModel(_characterConfig.action.IdAttack,
                     _characterConfig.action.IdSkill_1,
                     _characterConfig.action.IdSkill_2, _characterConfig.action.IdSkill_3),
@@ -43,7 +45,7 @@ namespace HOR.Entry.Command
             };
             WeaponContainer weaponContainer = new WeaponContainer();
             weaponContainer.AddWeapon(_weaponConfig.bullets[0]);
-            Service.Set(new BattleManager()
+            Service.Set(new CharacterManager()
             {
                 CharacterConfigScript = characterConfig,
                 CharacterActionHandle =  characterAction,

@@ -10,7 +10,7 @@ namespace HOR.BattleSystem.Character.System
     { 
         private readonly EcsWorld world;
         private EcsFilter<RunComponent, DashComponent, ActionComponent> filterCharacter;
-        private BattleManager manager;
+        private CharacterManager manager;
 
         public void Init()
         {

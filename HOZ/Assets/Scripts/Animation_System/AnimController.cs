@@ -1,30 +1,34 @@
 ﻿using System;
+using Animancer;
 using CoReaction;
-using HOR.BattleSystem.Character.Action.Model;
 using UnityEngine;
 
 namespace Animation_System
 {
+    [RequireComponent(typeof(AnimancerComponent))]
     public class AnimController : MonoBehaviour
     {
-        private ReactionController reactionControl;
+        public ReactionController reactionControl;
+        public Vector3 input;
+        [SerializeField] private AnimancerComponent animancer;
+        [SerializeField] private ClipState.Transition idle;
+        [SerializeField] private ClipState.Transition runF;
+        [SerializeField] private ClipState.Transition runB;
+        [SerializeField] private ClipState.Transition runR;
+        [SerializeField] private ClipState.Transition runL;
         
-        private void Awake()
-        {
-          
-        }
 
         private void Start()
         {
+            animancer.Play(idle);
             CreateAction();
         }
 
         private void Update()
         {
-            Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            reactionControl.SetFloat(ParameterID.H, input.x);
-            reactionControl.SetFloat(ParameterID.V, input.z);
-            reactionControl.SetBool(ParameterID.Input, input != Vector3.zero);
+            input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            reactionControl.SetInt(ParameterID.H, (int)input.z);
+            reactionControl.SetInt(ParameterID.V, (int)input.x);
         }
 
         void CreateAction()
@@ -35,16 +39,17 @@ namespace Animation_System
             Backward();
             Right();
             Left();
+            Idle();
         }
 
         void Forward()
         {
             var f = new BaseReaction();
-            f.AddCondition(ParameterID.H, CompareType.FloatLess, 0.1f);
-            f.AddCondition(ParameterID.H, CompareType.FloatGreater, -0.1f);
-            f.AddCondition(ParameterID.V, CompareType.FloatGreater, 0.9f);
+            f.AddCondition(ParameterID.H, CompareType.IntegerEqual, 1);
+            f.AddCondition(ParameterID.V, CompareType.IntegerEqual, 0);
             f.SetAction(() =>
             {
+                animancer.Play(runF);
                 Debug.Log("F");
             });
             reactionControl.AddReaction(f);
@@ -53,11 +58,11 @@ namespace Animation_System
         void Backward()
         {
             var b = new BaseReaction();
-            b.AddCondition(ParameterID.H, CompareType.FloatLess, 0.1f);
-            b.AddCondition(ParameterID.H, CompareType.FloatGreater, -0.1f);
-            b.AddCondition(ParameterID.V, CompareType.FloatLess, -0.9f);
+            b.AddCondition(ParameterID.H, CompareType.IntegerEqual, -1);
+            b.AddCondition(ParameterID.V, CompareType.IntegerEqual, 0);
             b.SetAction(() =>
             {
+                animancer.Play(runB);
                 Debug.Log("B");
             });
             reactionControl.AddReaction(b);
@@ -66,11 +71,11 @@ namespace Animation_System
         void Right()
         {
             var r = new BaseReaction();
-            r.AddCondition(ParameterID.V, CompareType.FloatLess, 0.1f);
-            r.AddCondition(ParameterID.V, CompareType.FloatGreater, -0.1f);
-            r.AddCondition(ParameterID.H, CompareType.FloatGreater, 0.9f);
+            r.AddCondition(ParameterID.H, CompareType.IntegerEqual, 0);
+            r.AddCondition(ParameterID.V, CompareType.IntegerEqual, 1);
             r.SetAction(() =>
             {
+                animancer.Play(runR);
                 Debug.Log("R");
             });
             reactionControl.AddReaction(r);
@@ -79,21 +84,32 @@ namespace Animation_System
         void Left()
         {
             var l = new BaseReaction();
-            l.AddCondition(ParameterID.V, CompareType.FloatLess, 0.1f);
-            l.AddCondition(ParameterID.V, CompareType.FloatGreater, -0.1f);
-            l.AddCondition(ParameterID.H, CompareType.FloatLess, -0.9f);
+            l.AddCondition(ParameterID.H, CompareType.IntegerEqual,0);
+            l.AddCondition(ParameterID.V, CompareType.IntegerEqual, -1);
             l.SetAction(() =>
             {
+                animancer.Play(runL);
                 Debug.Log("L");
             });
             reactionControl.AddReaction(l);
         }
+
+        void Idle()
+        {
+            var _idle = new BaseReaction();
+            _idle.AddCondition(ParameterID.V, CompareType.IntegerEqual,0);
+            _idle.AddCondition(ParameterID.H, CompareType.IntegerEqual, 0);
+            _idle.SetAction(() =>
+            {
+                animancer.Play(idle);
+            });
+            reactionControl.AddReaction(_idle);
+        }
         
         private void AddParameterToReactionController()
         {
-            reactionControl.AddParameter(ParameterID.H, ParameterType.Float);
-            reactionControl.AddParameter(ParameterID.V, ParameterType.Float);
-            reactionControl.AddParameter(ParameterID.Input, ParameterType.Boolean);
+            reactionControl.AddParameter(ParameterID.H, ParameterType.Integer);
+            reactionControl.AddParameter(ParameterID.V, ParameterType.Integer);
         }
     }
     
@@ -101,6 +117,5 @@ namespace Animation_System
     {
         public const int H = 1;
         public const int V = 2;
-        public const int Input = 3;
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f183c3c31d52421ba146c3c87cea8a58, type: 3}
   m_Name: CharacterConfig
   m_EditorClassIdentifier: 
-  pathModel: Prefabs/Cube
+  pathModel: Prefabs/Characters
   run:
     runSpeed: 7
   rotate:
@@ -46,3 +46,30 @@ MonoBehaviour:
       duration: 0
       timeLife: 0
       des: 
+  anim:
+    structAnim:
+      idle_1:
+        canOverride: 1
+        anim: {fileID: -203655887218126122, guid: 55cd4af0ae8992346b2556aac7522fb4,
+          type: 3}
+        speed: 1
+      walk_right:
+        canOverride: 1
+        anim: {fileID: -203655887218126122, guid: c447b641a4857594c8f929ad35ec79c3,
+          type: 3}
+        speed: 1
+      walk_left:
+        canOverride: 1
+        anim: {fileID: -203655887218126122, guid: c2f792e950fca754b8f6b17be8c314e7,
+          type: 3}
+        speed: 1
+      walk_forward:
+        canOverride: 1
+        anim: {fileID: -203655887218126122, guid: 11025b544b39dcb4482f9872e9964e64,
+          type: 3}
+        speed: 1
+      walk_backward:
+        canOverride: 1
+        anim: {fileID: -203655887218126122, guid: ccc885ebc51f4d941aff36fd56bf14f0,
+          type: 3}
+        speed: 1

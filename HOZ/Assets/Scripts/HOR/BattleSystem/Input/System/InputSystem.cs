@@ -7,7 +7,7 @@ namespace HOR.BattleSystem.Input.System
     {
         private readonly EcsFilter<InputComponent> filterInput = null;
         private readonly EcsWorld world;
-        private readonly BattleManager manager;
+        private readonly CharacterManager manager;
         
         public void Init()
         {
